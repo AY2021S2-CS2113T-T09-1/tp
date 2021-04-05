@@ -16,12 +16,12 @@ public class SampleLocations {
 
     static {
         try {
-            SCHOOL = new Location(new String[] {"National University of Singapore", "1000"});
-            SMALL_SHOP = new Location(new String[] {"ValueDollar", "25"});
-            BIG_MALL = new Location(new String[] {"VivoCity", "1000"});
-            FOOD_COURT = new Location(new String[] {"Kopitiam", "50"});
-            CINEMA = new Location(new String[] {"Cathay Cineplex", "100"});
-            EVENT = new Location(new String[] {"Wedding", "250"});
+            SCHOOL = new Location(new String[] {"1000"});
+            SMALL_SHOP = new Location(new String[] {"25"});
+            BIG_MALL = new Location(new String[] {"1000"});
+            FOOD_COURT = new Location(new String[] {"50"});
+            CINEMA = new Location(new String[] {"100"});
+            EVENT = new Location(new String[] {"250"});
         } catch (InvalidMaxCapacityException | InvalidArgumentSizeException e) {
             e.printStackTrace();
         }
