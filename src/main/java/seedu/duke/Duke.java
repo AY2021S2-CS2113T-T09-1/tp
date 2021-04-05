@@ -3,18 +3,7 @@ package seedu.duke;
 import seedu.duke.commands.Command;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.commands.ExitCommand;
-import seedu.duke.exceptions.HistoryStorageException;
-import seedu.duke.exceptions.InvalidCommandException;
-import seedu.duke.exceptions.InvalidIdException;
-import seedu.duke.exceptions.StorageOperationException;
-import seedu.duke.exceptions.InvalidMaxCapacityException;
-import seedu.duke.exceptions.InvalidArgumentSizeException;
-import seedu.duke.exceptions.NoArgumentPassedException;
-import seedu.duke.exceptions.WrongFlagException;
-import seedu.duke.exceptions.InvalidNameFormatException;
-import seedu.duke.exceptions.InvalidPhoneNumberException;
-import seedu.duke.exceptions.PersonNotFoundException;
-import seedu.duke.exceptions.InvalidIntegerException;
+import seedu.duke.exceptions.*;
 import seedu.duke.history.HistoryFile;
 import seedu.duke.location.Location;
 import seedu.duke.parser.Parser;
@@ -110,9 +99,8 @@ public class Duke {
                 storage.save(trackingList);
                 personLog.saveAllPersons();
                 ui.printReaction(commandOutput);
-            } catch (PersonNotFoundException | StorageOperationException
-                    | HistoryStorageException e) {
-                //System.out.println("Person not found!");
+            } catch (PersonNotFoundException | StorageOperationException | HistoryStorageException
+                    | CheckOutException e) {
                 ui.notifyErrorToUser(e);
             }
 

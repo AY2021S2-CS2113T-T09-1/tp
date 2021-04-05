@@ -47,6 +47,6 @@ public class CheckoutParser extends Parser {
             throw new InvalidIdException(Messages.ID_ERROR);
         }
 
-        return new CheckoutCommand(id,name);
+        return new CheckoutCommand(id);
     }
 }

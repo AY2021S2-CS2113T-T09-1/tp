@@ -2,6 +2,7 @@ package seedu.duke.commands;
 
 import seedu.duke.Duke;
 import seedu.duke.common.Messages;
+import seedu.duke.exceptions.CheckOutException;
 import seedu.duke.exceptions.HistoryStorageException;
 import seedu.duke.exceptions.PersonNotFoundException;
 
@@ -26,7 +27,6 @@ public class CheckoutCommand extends Command {
     public static final String CURRENT_AND_MAXIMUM_MESSAGE = "Current capacity: %d out of %d";
     public static final String CHECKOUT_MESSAGE = "%s has been successfully checked-out!" + System.lineSeparator();
     private final Id id;
-    private String nameString;
     private Person toCheckout;
     private static final Logger logger = Logger.getLogger(CheckoutCommand.class.getName());
     private HistoryFile historyFile;
@@ -35,15 +35,10 @@ public class CheckoutCommand extends Command {
      * Creates a CheckoutCommand to checkout a visitor.
      *
      * @param idString ID of the visitor who wants to check out
-     * @param nameString name of the visitor who wants ti check out
      */
-    public CheckoutCommand(String idString,String nameString) {
+    public CheckoutCommand(String idString) {
         this.id = new Id(idString);
         historyFile = Duke.getInstance().getHistoryFile();
-        if (nameString == null) {
-            this.nameString = null;
-        }
-        this.nameString = nameString;
     }
 
     public Person getToCheckout() {
@@ -59,16 +54,12 @@ public class CheckoutCommand extends Command {
      * @throws HistoryStorageException if there are problems saving into the file
      */
     @Override
-    public CommandOutput execute(TrackingList trackingList) throws PersonNotFoundException, HistoryStorageException {
-        // historyFile = new HistoryFile();
+    public CommandOutput execute(TrackingList trackingList) throws PersonNotFoundException, HistoryStorageException,
+            CheckOutException {
         toCheckout = trackingList.findExactPerson(id);
         Name toCheckoutName = toCheckout.getName();
-        if (nameString != null) {
-            boolean isSamePerson = toCheckoutName.getNameString().equals(nameString);
-            if (!isSamePerson) {
-                logger.warning("ID entered does not match the name from the list.");
-            }
-            assert isSamePerson : "ID does not match name.";
+        if (!toCheckout.getCheckedIn()) {
+            throw new CheckOutException(String.format(Messages.ALREADY_CHECKEDOUT, toCheckoutName));
         }
         if (toCheckout == null) {
             throw new PersonNotFoundException(Messages.PERSON_NOT_FOUND);

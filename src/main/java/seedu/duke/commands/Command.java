@@ -1,5 +1,6 @@
 package seedu.duke.commands;
 
+import seedu.duke.exceptions.CheckOutException;
 import seedu.duke.exceptions.HistoryStorageException;
 import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
@@ -17,6 +18,6 @@ public abstract class Command {
      * Executes the command.
      */
     public abstract CommandOutput execute(TrackingList trackingList) throws
-            PersonNotFoundException, StorageOperationException, HistoryStorageException;
+            PersonNotFoundException, StorageOperationException, HistoryStorageException, CheckOutException;
 
 }
