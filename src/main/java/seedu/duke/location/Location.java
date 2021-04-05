@@ -15,8 +15,9 @@ public class Location {
     /**
      * Creates a Location using the arguments the user had provided when running the jar file.
      *
-     * @param args provided by the user when running the jar file. Contains the venue name and maximum capacity.
+     * @param args provided by the user when running the jar file. Contains the maximum capacity
      * @throws InvalidMaxCapacityException if the maximum capacity provided does not meet the requirements
+     * @throws InvalidArgumentSizeException if the length of the argument is not exactly one
      */
     public Location(String[] args) throws InvalidMaxCapacityException, InvalidArgumentSizeException {
         checkArgumentValidity(args);
@@ -34,8 +35,9 @@ public class Location {
     /**
      * Checks if the arguments entered by the user is valid and meets the requirements specified.
      *
-     * @param args provided by the user when running the jar file. Contains the venue name and maximum capacity.
+     * @param args provided by the user when running the jar file. Contains the maximum capacity
      * @throws InvalidMaxCapacityException if the maximum capacity provided does not meet the requirements
+     * @throws InvalidArgumentSizeException if the length of the argument provided is not exactly one
      */
     private void checkArgumentValidity(String[] args) throws InvalidMaxCapacityException, InvalidArgumentSizeException {
         if (args.length != 1) {
