@@ -12,7 +12,7 @@ for /f "tokens=*" %%a in (
     set jarloc=%%a
 )
 
-java -jar %jarloc% "Control Your Crowd Launch Day" "500"< ..\..\text-ui-test\input.txt > ..\..\text-ui-test\ACTUAL.TXT
+java -jar %jarloc% "500"< ..\..\text-ui-test\input.txt > ..\..\text-ui-test\ACTUAL.TXT
 
 cd ..\..\text-ui-test
 
