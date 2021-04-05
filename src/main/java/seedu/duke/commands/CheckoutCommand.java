@@ -28,7 +28,6 @@ public class CheckoutCommand extends Command {
     public static final String CHECKOUT_MESSAGE = "%s has been successfully checked-out!" + System.lineSeparator();
     private final Id id;
     private Person toCheckout;
-    private static final Logger logger = Logger.getLogger(CheckoutCommand.class.getName());
     private HistoryFile historyFile;
 
     /**

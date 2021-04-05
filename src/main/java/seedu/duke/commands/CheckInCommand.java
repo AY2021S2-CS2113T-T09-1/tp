@@ -15,6 +15,8 @@ import seedu.duke.person.PersonLog;
 import seedu.duke.person.Phone;
 import seedu.duke.person.TrackingList;
 
+import java.util.logging.Logger;
+
 /**
  * Check in a visitor.
  * Adds a new visitor to the trackingList and personLog.
@@ -32,6 +34,7 @@ public class CheckInCommand extends Command {
     private final Person toCheckin;
     private final HistoryFile historyFile;
     private final Id id;
+    private static final Logger logger = Logger.getLogger(CheckoutCommand.class.getName());
 
     /**
      * Creates a CheckInCommand to checkin a visitor.
@@ -87,6 +90,11 @@ public class CheckInCommand extends Command {
     private void checkIfAlreadyCheckedIn(Id toCheckinId, TrackingList trackingList) throws CheckInException,
             PersonNotFoundException {
         Person visitor = trackingList.findExactPerson(toCheckinId);
+        boolean isSamePerson = toCheckin.getName().getNameString().equals(visitor.getName().getNameString());
+        if (!isSamePerson) {
+            logger.warning("ID entered does not match the name from the list.");
+        }
+        assert isSamePerson : "ID does not match name.";
         if (visitor.getCheckedIn()) {
             throw new CheckInException(String.format(Messages.ALREADY_CHECKEDIN, visitor.getName().nameString));
         }
