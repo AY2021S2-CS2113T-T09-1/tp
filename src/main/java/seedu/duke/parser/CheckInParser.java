@@ -3,6 +3,7 @@ package seedu.duke.parser;
 import seedu.duke.commands.CheckInCommand;
 import seedu.duke.commands.Command;
 import seedu.duke.common.Messages;
+import seedu.duke.exceptions.CheckInException;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.InvalidPhoneNumberException;

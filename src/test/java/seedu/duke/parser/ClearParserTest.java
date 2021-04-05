@@ -2,6 +2,7 @@ package seedu.duke.parser;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.commands.ClearCommand;
+import seedu.duke.exceptions.CheckInException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.InvalidIntegerException;
@@ -24,7 +25,8 @@ public class ClearParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException,
+            CheckInException {
 
         ClearCommand clearCommand = (ClearCommand) parser.parseCommand("clear");
         assertEquals("clear", ClearCommand.COMMAND);

@@ -21,6 +21,7 @@ public class Messages {
     public static final String PHONE_ERROR = "Phone number should consist of only 8 digits";
     public static final String INVALID_INTEGER = "Argument should only consist of positive integers!";
     public static final String ALREADY_CHECKEDOUT = "%s is already checked out.";
+    public static final String ALREADY_CHECKEDIN = "%s is already checked in.";
 
     /**
      * Command summary for help command.

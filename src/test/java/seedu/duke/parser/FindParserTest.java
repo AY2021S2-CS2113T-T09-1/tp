@@ -3,6 +3,7 @@ package seedu.duke.parser;
 import org.junit.jupiter.api.Test;
 import seedu.duke.commands.FindCommand;
 import seedu.duke.common.Messages;
+import seedu.duke.exceptions.CheckInException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.InvalidIntegerException;
@@ -26,7 +27,7 @@ public class FindParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException, CheckInException {
 
         parser.parseCommand("checkin i/123A n/John");
         FindCommand findCommand = (FindCommand) parser.parseCommand("find i/123A");

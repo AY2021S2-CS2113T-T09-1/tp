@@ -3,6 +3,7 @@ package seedu.duke.parser;
 import org.junit.jupiter.api.Test;
 import seedu.duke.commands.EditMaxCommand;
 import seedu.duke.common.Messages;
+import seedu.duke.exceptions.CheckInException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.InvalidIntegerException;
@@ -25,7 +26,7 @@ public class EditMaxParserTest {
     public void parseEditMax_testCommand() throws StorageOperationException, InvalidIntegerException,
             InvalidIdException, InvalidCommandException, InvalidPhoneNumberException,
             PersonNotFoundException, NoArgumentPassedException, WrongFlagException,
-            InvalidNameFormatException, InvalidMaxCapacityException {
+            InvalidNameFormatException, InvalidMaxCapacityException, CheckInException {
         EditMaxCommand editMaxCommand = (EditMaxCommand) parser.parseCommand("editmax 1000");
         assertEquals("editmax",editMaxCommand.COMMAND);
 

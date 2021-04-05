@@ -2,6 +2,7 @@ package seedu.duke.commands;
 
 import seedu.duke.Duke;
 import seedu.duke.common.Messages;
+import seedu.duke.exceptions.CheckInException;
 import seedu.duke.exceptions.HistoryStorageException;
 import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
@@ -30,6 +31,7 @@ public class CheckInCommand extends Command {
     public static final String CHECKIN_FAIL_MESSAGE = "Unable to check in! Maximum capacity of %d reached!";
     private final Person toCheckin;
     private final HistoryFile historyFile;
+    private final Id id;
 
     /**
      * Creates a CheckInCommand to checkin a visitor.
@@ -44,7 +46,7 @@ public class CheckInCommand extends Command {
     public CheckInCommand(String idString,
                           String nameString,
                           String phoneString) throws StorageOperationException, PersonNotFoundException {
-        Id id = new Id(idString);
+        id = new Id(idString);
         historyFile = Duke.getInstance().getHistoryFile();
         PersonLog personLog = PersonLog.getInstance();
         if (personLog.isFound(id)) {
@@ -73,8 +75,22 @@ public class CheckInCommand extends Command {
         }
     }
 
-    public Person getToCheckIn() {
-        return toCheckin;
+    /**
+     * Checks if the visitor to be checked in is already checked in.
+     * If not, check in the visitor.
+     *
+     * @param toCheckinId visitor id
+     * @param trackingList list of visitors
+     * @throws CheckInException if visitor is already checked in
+     * @throws PersonNotFoundException if visitor is not found in the tracking list
+     */
+    private void checkIfAlreadyCheckedIn(Id toCheckinId, TrackingList trackingList) throws CheckInException,
+            PersonNotFoundException {
+        Person visitor = trackingList.findExactPerson(toCheckinId);
+        if (visitor.getCheckedIn()) {
+            throw new CheckInException(String.format(Messages.ALREADY_CHECKEDIN, visitor.getName().nameString));
+        }
+        visitor.setCheckedIn(true);
     }
 
     /**
@@ -85,10 +101,11 @@ public class CheckInCommand extends Command {
      * @return check in success message or check in failure message depending on the current capacity
      * @throws HistoryStorageException if there are problems saving into the file
      * @throws PersonNotFoundException if visitor cannot be found in the trackingList with the ID
+     * @throws CheckInException if visitor is already checked in
      */
     @Override
-    public CommandOutput execute(TrackingList trackingList) throws HistoryStorageException, PersonNotFoundException {
-        // historyFile = new HistoryFile();
+    public CommandOutput execute(TrackingList trackingList) throws HistoryStorageException, PersonNotFoundException,
+            CheckInException {
         MAXIMUM_CAPACITY = location.getMaxCapacity();
         if (trackingList.getCurrentCapacity() >= MAXIMUM_CAPACITY) {
             return new CommandOutput(String.format(CHECKIN_FAIL_MESSAGE, MAXIMUM_CAPACITY), COMMAND);
@@ -96,9 +113,8 @@ public class CheckInCommand extends Command {
         if (!trackingList.contains(toCheckin)) {
             toCheckin.setCheckedIn(true);
             trackingList.add(toCheckin);
-        } else {
-            trackingList.findExactPerson(toCheckin.getId()).setCheckedIn(true);
         }
+        checkIfAlreadyCheckedIn(id, trackingList);
         historyFile.saveToHistory(toCheckin, " checked in at ");
         CURRENT_CAPACITY = trackingList.getCurrentCapacity();
         return new CommandOutput(String.format(CHECKIN_SUCCESS_MESSAGE, toCheckin.getName())

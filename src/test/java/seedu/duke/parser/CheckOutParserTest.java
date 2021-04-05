@@ -3,6 +3,7 @@ package seedu.duke.parser;
 import org.junit.jupiter.api.Test;
 import seedu.duke.commands.CheckoutCommand;
 import seedu.duke.common.Messages;
+import seedu.duke.exceptions.CheckInException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.InvalidIntegerException;
@@ -26,7 +27,8 @@ public class CheckOutParserTest {
 
             WrongFlagException, InvalidCommandException,
             InvalidIdException, InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException,
+            CheckInException {
 
         CheckoutCommand checkoutCommand = (CheckoutCommand) parser.parseCommand(
                 "checkout n/John i/123A");

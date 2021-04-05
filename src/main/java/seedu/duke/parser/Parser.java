@@ -12,6 +12,7 @@ import seedu.duke.commands.ListCheckedInCommand;
 import seedu.duke.commands.ListCommand;
 import seedu.duke.commands.MoveStorageCommand;
 import seedu.duke.common.Messages;
+import seedu.duke.exceptions.CheckInException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.InvalidIntegerException;
@@ -64,7 +65,8 @@ public class Parser {
             InvalidCommandException, NoArgumentPassedException,
             WrongFlagException, InvalidIdException,
             InvalidNameFormatException, InvalidPhoneNumberException,
-            StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException,
+            CheckInException {
 
         String[] inputArray;
         String argument = null;

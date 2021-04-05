@@ -2,6 +2,7 @@ package seedu.duke.parser;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.commands.MoveStorageCommand;
+import seedu.duke.exceptions.CheckInException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.InvalidIntegerException;
@@ -23,7 +24,7 @@ public class MoveStorageParserTest {
     public void parseMoveStorageCommand_testCommand() throws StorageOperationException, InvalidIntegerException,
             InvalidIdException, InvalidCommandException, InvalidPhoneNumberException,
             PersonNotFoundException, NoArgumentPassedException, WrongFlagException, InvalidNameFormatException,
-            InvalidMaxCapacityException {
+            InvalidMaxCapacityException, CheckInException {
         MoveStorageCommand moveStorageCommand = (MoveStorageCommand) parser.parseCommand("movestorage abc");
         assertEquals("movestorage",moveStorageCommand.COMMAND);
     }

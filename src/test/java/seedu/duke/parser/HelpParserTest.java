@@ -2,6 +2,7 @@ package seedu.duke.parser;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.commands.HelpCommand;
+import seedu.duke.exceptions.CheckInException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.InvalidIntegerException;
@@ -22,7 +23,8 @@ public class HelpParserTest {
     @Test
     public void parseHelp_testCommand() throws StorageOperationException, InvalidIntegerException,
             InvalidIdException, InvalidCommandException, InvalidPhoneNumberException, PersonNotFoundException,
-            NoArgumentPassedException, WrongFlagException, InvalidNameFormatException, InvalidMaxCapacityException {
+            NoArgumentPassedException, WrongFlagException, InvalidNameFormatException, InvalidMaxCapacityException,
+            CheckInException {
         HelpCommand helpCommand = (HelpCommand) parser.parseCommand("help");
         assertEquals("help",helpCommand.COMMAND);
     }
