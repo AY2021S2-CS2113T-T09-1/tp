@@ -27,7 +27,8 @@ public class FindParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException, CheckInException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException,
+            CheckInException {
 
         parser.parseCommand("checkin i/123A n/John");
         FindCommand findCommand = (FindCommand) parser.parseCommand("find i/123A");
