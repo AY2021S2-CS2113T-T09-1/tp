@@ -27,7 +27,7 @@ public class ListCheckedInParserTest {
             StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException {
 
         ListCheckedInCommand listCheckedInCommand = (ListCheckedInCommand) parser.parseCommand(
-                "list");
-        assertEquals("list", listCheckedInCommand.COMMAND);
+                "listcheckedin");
+        assertEquals("listcheckedin", listCheckedInCommand.COMMAND);
     }
 }

@@ -49,7 +49,7 @@ public class TextUi {
             assert commandOutput.persons != null : "Expect NoPersonFound Exception,";
             printList(commandOutput.persons);
             break;
-        case "list":
+        case "listcheckedin":
             assert commandOutput.persons != null : "Expect NoPersonFound Exception.";
             printCheckedInList(commandOutput.persons);
             break;

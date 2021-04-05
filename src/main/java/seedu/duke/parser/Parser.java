@@ -75,7 +75,7 @@ public class Parser {
         command = inputArray[0];
         if (inputArray.length != 1) {
             argument = inputArray[1].trim();
-        } else if (!command.equals("list")
+        } else if (!command.equals("listcheckedin")
                 && !command.equals("exit")
                 && !command.equals("listall")
                 && !command.equals("clear")

@@ -7,7 +7,7 @@ import seedu.duke.person.TrackingList;
  */
 public class ListCheckedInCommand extends Command {
 
-    public static final String COMMAND = "list";
+    public static final String COMMAND = "listcheckedin";
 
     /**
      * Executes the ListCheckedInCommand.
