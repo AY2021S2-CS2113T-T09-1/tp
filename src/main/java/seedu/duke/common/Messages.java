@@ -10,8 +10,10 @@ public class Messages {
     public static final String INVALID_COMMAND = "Invalid command detected! Try again!";
     public static final String NO_ARGUMENT = "No argument passed! Try again!";
     public static final String WRONG_FLAG = "Wrong flags used!";
-    public static final String INVALID_MAX_CAPACITY = "Invalid argument for max capacity! Try again!"
+    public static final String INVALID_MAX_CAPACITY_ARG = "Invalid argument for max capacity! Try again!"
             + System.lineSeparator() + "E.g. java -jar CYC.jar NUS 1000";
+    public static final String INVALID_MAX_CAPACITY = "Maximum capacity should be a positive number that is less than "
+            + "7 digits.";
     public static final String INVALID_ARGUMENT_SIZE = "There should be exactly 2 arguments! Try again!"
             + System.lineSeparator() + "E.g. java -jar CYC.jar NUS 1000";
     public static final String ID_ERROR = "ID should be 3 digits followed by a uppercase letter";

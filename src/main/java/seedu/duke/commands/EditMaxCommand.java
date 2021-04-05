@@ -1,11 +1,11 @@
 package seedu.duke.commands;
 
+import com.sun.javafx.scene.shape.MeshHelper;
 import seedu.duke.Duke;
+import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidMaxCapacityException;
 import seedu.duke.location.Location;
 import seedu.duke.person.TrackingList;
-
-import static seedu.duke.common.Messages.INVALID_MAX_CAPACITY;
 
 /**
  * Set a new maximum capacity for the venue.
@@ -38,7 +38,7 @@ public class EditMaxCommand extends Command {
      */
     private void checkCapacityValidity(String newMaxCapacity) throws InvalidMaxCapacityException {
         if (!newMaxCapacity.matches(NEW_CAPACITY_REGEX) || Integer.parseInt(newMaxCapacity) < 0) {
-            throw new InvalidMaxCapacityException(INVALID_MAX_CAPACITY);
+            throw new InvalidMaxCapacityException(Messages.INVALID_MAX_CAPACITY);
         }
     }
 

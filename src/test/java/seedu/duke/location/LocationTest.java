@@ -28,7 +28,7 @@ public class LocationTest {
     public void testInvalidMaxCapacity() {
         Throwable exception = assertThrows(InvalidMaxCapacityException.class, () ->
                 new Location(new String[]{"Location2", "aaa123"}));
-        assertEquals(Messages.INVALID_MAX_CAPACITY, exception.getMessage());
+        assertEquals(Messages.INVALID_MAX_CAPACITY_ARG, exception.getMessage());
     }
 
     @Test

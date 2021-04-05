@@ -54,7 +54,7 @@ public class Location {
             throw new InvalidArgumentSizeException(Messages.INVALID_ARGUMENT_SIZE);
         }
         if (!args[1].matches(MAX_CAPACITY_REGEX) || Integer.parseInt(args[1]) < 0) {
-            throw new InvalidMaxCapacityException(Messages.INVALID_MAX_CAPACITY);
+            throw new InvalidMaxCapacityException(Messages.INVALID_MAX_CAPACITY_ARG);
         }
     }
 
