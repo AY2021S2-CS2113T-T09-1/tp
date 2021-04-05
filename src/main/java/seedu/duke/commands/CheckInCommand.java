@@ -121,8 +121,9 @@ public class CheckInCommand extends Command {
         if (!trackingList.contains(toCheckin)) {
             toCheckin.setCheckedIn(true);
             trackingList.add(toCheckin);
+        } else {
+            checkIfAlreadyCheckedIn(id, trackingList);
         }
-        checkIfAlreadyCheckedIn(id, trackingList);
         historyFile.saveToHistory(toCheckin, " checked in at ");
         CURRENT_CAPACITY = trackingList.getCurrentCapacity();
         return new CommandOutput(String.format(CHECKIN_SUCCESS_MESSAGE, toCheckin.getName())
